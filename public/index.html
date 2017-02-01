@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Twitter + Instagram News Feed</title>
+		
+		<!-- Third Party-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+		
+		<!-- <link rel="stylesheet" href="style.css" > -->
+	</head>
+	<body ng-controller="AppCtrl">
+		<nav class="navbar navbar-inverse">
+		  	<div class="container-fluid">
+		    	<div class="navbar-header">
+		      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span> 
+		      		</button>
+		      		<a class="navbar-brand" href="#">News Feed</a>
+		    	</div>
+			    
+			    <div class="collapse navbar-collapse" id="myNavbar">
+			      	<ul class="nav navbar-nav navbar-right">
+			        	<li class="active"><a href="#">Home</a></li>
+			        	<li><a href="#">About</a></li>
+			      	</ul>
+			    </div>
+			</div>
+		</nav>
+
+		<div id="loading-modal" class="modal fade" role="dialog">	<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="loader"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="row">
+								<form class="form-inline" id="search-form">
+									<legend>Search</legend>
+									<div class="col-sm-8">
+										<input type="text" id="search-text" name="search" class="form-control full-width" id="search" ng-model="hashtag">
+									</div>	
+									<div class="col-sm-2">
+										<input type="submit" value="Search" class="btn btn-primary full-width" ng-click="search()">
+									</div>
+									<div class="col-sm-2">
+										<button id="refresh" class="btn btn-success full-width refresh">Refresh</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div id="map"></div>
+						</div>
+						<div class="col-sm-12">
+							<div class="result-tab">
+								<div class="row">
+									<div class="col-sm-12">
+										<legend>News Feed</legend>
+									</div>
+									<div class="col-sm-12">
+										<div class="row feed-container" ng-repeat="tweet in tweets">
+											{{tweet.created_at}}
+											<p style="font-weight:bolder;">{{tweet.text}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Third Party-->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6IT_VMRBMnXAGBb9EPjOQPkN0qPH5LCs&callback=initMap"></script> -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	
+
+		<!-- CUstom Js-->
+		<script src="controllers/controller.js"></script>
+		<!-- <script src="script.js"></script> -->
+	</body>
+</html>
