@@ -1,6 +1,6 @@
 var express=require('express');
 var twitter=require('twitter');
-
+var ig_ts=require('instagram-tagscrape');
 // create the application
 var app=express();
 
@@ -17,6 +17,10 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/search/tweets/:query', function(req,res){
 	getTweets(req.params.query, res)
+})
+
+app.get('/search/insta/:query', function(req,res){
+	getInsta(req.params.query,res)
 })
 
 var getTweets=function(search,res){
@@ -40,6 +44,18 @@ var getTweets=function(search,res){
 			res.send({})
 		}
 	})
+	}
+	catch(err){
+		console.log(err)
+	}
+}
+
+var getInsta= function(search,res){
+	try{
+		search=search.split(' ')
+		result=ig_ts.scrapeTagPage(search.join('')).then(function(result){
+			res.send(result.media)	
+		})
 	}
 	catch(err){
 		console.log(err)

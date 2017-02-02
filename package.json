@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.1",
+    "instagram-tagscrape": "^1.0.2",
     "twitter": "^1.7.0"
   }
 }
