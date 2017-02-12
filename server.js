@@ -3,6 +3,7 @@ var twitter=require('twitter');
 var ig_ts=require('instagram-tagscrape');
 // create the application
 var app=express();
+var port=process.env.PORT || 3000;
 
 var keys=require('./keys')
 
@@ -64,4 +65,4 @@ var getInsta= function(search,res){
 
 console.log('server listening on port 3000')
 
-app.listen(3000);
+app.listen(port);
